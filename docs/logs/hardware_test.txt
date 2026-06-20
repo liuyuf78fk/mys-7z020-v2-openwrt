@@ -1,0 +1,70 @@
+root@OpenWrt:~# ifconfig
+eth0      Link encap:Ethernet  HWaddr 00:0A:35:00:1E:53
+          inet addr:192.168.3.234  Bcast:192.168.3.255  Mask:255.255.255.0
+          inet6 addr: fe80::20a:35ff:fe00:1e53/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:2433 errors:0 dropped:615 overruns:0 frame:0
+          TX packets:1112 errors:0 dropped:6 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000
+          RX bytes:210985 (206.0 KiB)  TX bytes:619204 (604.6 KiB)
+          Interrupt:28 Base address:0xb000
+
+lo        Link encap:Local Loopback
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          inet6 addr: ::1/128 Scope:Host
+          UP LOOPBACK RUNNING  MTU:65536  Metric:1
+          RX packets:4 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:4 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000
+          RX bytes:329 (329.0 B)  TX bytes:329 (329.0 B)
+
+root@OpenWrt:~#
+
+root@OpenWrt:~# echo 1 > /sys/class/leds/usr_led1/brightness
+root@OpenWrt:~# echo 0 > /sys/class/leds/usr_led1/brightness
+root@OpenWrt:~#
+
+
+root@OpenWrt:~# evtest /dev/input/event0
+Input driver version is 1.0.1
+Input device ID: bus 0x19 vendor 0x1 product 0x1 version 0x100
+Input device name: "gpio-keys"
+Supported events:
+  Event type 0 (EV_SYN)
+  Event type 1 (EV_KEY)
+    Event code 148 (KEY_PROG1)
+Key repeat handling:
+  Repeat type 20 (EV_REP)
+    Repeat code 0 (REP_DELAY)
+      Value    250
+    Repeat code 1 (REP_PERIOD)
+      Value     33
+Properties:
+Testing ... (interrupt to exit)
+Event: time 1781950790.163608, type 1 (EV_KEY), code 148 (KEY_PROG1), value 1
+Event: time 1781950790.163608, -------------- SYN_REPORT ------------
+Event: time 1781950790.346013, type 1 (EV_KEY), code 148 (KEY_PROG1), value 0
+Event: time 1781950790.346013, -------------- SYN_REPORT ------------
+Event: time 1781950793.590368, type 1 (EV_KEY), code 148 (KEY_PROG1), value 1
+Event: time 1781950793.590368, -------------- SYN_REPORT ------------
+Event: time 1781950793.712177, type 1 (EV_KEY), code 148 (KEY_PROG1), value 0
+Event: time 1781950793.712177, -------------- SYN_REPORT ------------
+^C
+root@OpenWrt:~#
+
+
+root@OpenWrt:~# cat /sys/bus/iio/devices/iio:device0/in_accel_x_raw
+-2
+root@OpenWrt:~# cat /sys/bus/iio/devices/iio:device0/in_accel_y_raw
+-1
+root@OpenWrt:~# cat /sys/bus/iio/devices/iio:device0/in_accel_z_raw
+271
+root@OpenWrt:~#
+root@OpenWrt:~# cat /sys/bus/iio/devices/iio:device0/in_accel_scale
+0.004789
+root@OpenWrt:~#
+root@OpenWrt:~# cat /sys/class/hwmon/hwmon0/temp1_input
+42000
+root@OpenWrt:~# cat /sys/class/hwmon/hwmon0/temp1_input
+40000
+root@OpenWrt:~#
