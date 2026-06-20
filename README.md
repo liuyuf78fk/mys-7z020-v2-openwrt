@@ -100,6 +100,14 @@ tar -xzf openwrt-zynq-generic-xlnx_zynq-xxxx-targz-rootfs.tar.gz -C /mnt/rootfs
 
 ---
 
+### System Logs & Diagnostics
+
+You can check the system boot logs and hardware test results here:
+* [📄 View System Boot Log (dmesg.txt)](docs/logs/dmesg.txt)
+* [🛠️ View Hardware Test Report (hardware_test.txt)](docs/logs/hardware_test.txt)
+
+---
+
 ## License
 
 GPLv2
