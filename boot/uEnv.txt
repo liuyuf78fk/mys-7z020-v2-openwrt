@@ -1,0 +1,8 @@
+kernel_img=zImage
+dtb_img=zynq-mys-7z020-v2.dtb
+
+bootargs=console=ttyPS0,115200 root=/dev/mmcblk0p2 rw rootwait
+cp_kernel2ram=fatload mmc 0:1 0x03000000 ${kernel_img} && fatload mmc 0:1 0x02a00000 ${dtb_img}
+
+uenvcmd=env set bootargs "${bootargs}" && run cp_kernel2ram && bootz 0x03000000 - 0x02a00000
+
