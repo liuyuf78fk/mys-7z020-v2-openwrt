@@ -1,5 +1,5 @@
-# MYS-7Z020-V2 Board Support
-This repository contains the necessary configuration, device tree files, and build instructions for supporting the MYS-7Z020-V2 development board.
+# MYS-7Z020-V2 BSP (Linux Kernel & OpenWrt RootFS)
+This repository contains the Linux kernel configurations, OpenWrt root filesystem build scripts, device tree files, and step-by-step build instructions for the MYS-7Z020-V2 development board.
 
 ## Project Structure
 
