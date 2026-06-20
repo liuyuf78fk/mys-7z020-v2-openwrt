@@ -95,7 +95,12 @@ tar -xzf openwrt-zynq-generic-xlnx_zynq-xxxx-targz-rootfs.tar.gz -C /mnt/rootfs
 
 ---
 
+### LuCI Dashboard Preview
+![LuCI Dashboard](docs/screenshots/home_page.png)
+
+---
+
 ## License
 
-GPLv2.
+GPLv2
 
