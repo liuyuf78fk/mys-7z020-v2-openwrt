@@ -22,6 +22,12 @@
 		stdout-path = "serial0:115200n8";
 	};
 
+	gpio-beep {
+                compatible = "gpio-beeper";
+                lable = "pl-beep";
+                gpios = <&gpio0 117 GPIO_ACTIVE_HIGH>;
+        };
+
 	gpio-keys {
 		compatible = "gpio-keys";
 		autorepeat;
@@ -76,6 +82,15 @@
 
 &clkc {
 	ps-clk-frequency = <33333333>;
+};
+
+&cpu0 {
+        operating-points = <
+                /* kHz    uV */
+                766667  1000000
+                666667  1000000
+                333334  1000000
+        >;
 };
 
 &gem0 {
