@@ -28,3 +28,13 @@ If the board fails to boot automatically or defaults to the wrong environment, y
     reset
 
 Note: This configuration ensures that U-Boot prioritizes reading uEnv.txt from the SD card before proceeding with the standard kernel boot process.
+
+Changing the Ethernet MAC Address
+The default Ethernet MAC address is stored in the U-Boot environment variable `ethaddr`.
+To change the MAC address, stop at the U-Boot prompt and run:
+
+    env set -f ethaddr 00:0a:35:01:02:03
+    env save
+
+Verify the change:
+    printenv ethaddr
