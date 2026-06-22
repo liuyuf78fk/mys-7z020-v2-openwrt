@@ -6,10 +6,10 @@ Build Instructions
 
 To compile the U-Boot binary, run the following commands in this directory:
 
-# Configure U-Boot for MYS-7Z020-V2
+Configure U-Boot for MYS-7Z020-V2
 make CROSS_COMPILE=arm-linux-gnueabihf- xilinx_zynq_virt_defconfig
 
-# Compile with 14 parallel jobs
+Compile with 14 parallel jobs
 make CROSS_COMPILE=arm-linux-gnueabihf- -j8
 
 Deployment
