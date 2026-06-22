@@ -1,5 +1,5 @@
 # MYS-7Z020-V2 BSP (Linux Kernel & OpenWrt RootFS)
-This repository contains the U-Boot source code, Linux kernel source code (v7.1.0), the OpenWrt build configuration (.config) for generating the root filesystem, FPGA (PL) design sources, prebuilt boot images, and complete build instructions for the Z-turn Board V2 (MYS-7Z020-V2-0E1D-766-C).
+This repository provides a complete board support package (BSP) and FPGA design for the Z-turn Board V2 (MYS-7Z020-V2-0E1D-766-C), including board-specific U-Boot, Linux kernel (v7.1.0), OpenWrt build configuration (.config), FPGA (PL) design sources, prebuilt boot images, and complete build instructions.
 
 ## Project Structure
 
