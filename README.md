@@ -3,7 +3,7 @@ This repository provides a complete board support package (BSP) and FPGA design 
 
 ## Project Structure
 
-- `kernel/`: Linux kernel source code and board-specific patches.
+- `kernel/`: Modified Linux kernel source code directly adapted for the Z-turn Board V2.
 - `OpenWrt/`: Build configuration files for the root filesystem.
 - `docs/`: Validation logs, screenshots, and hardware test results.
 - `boot/`: Boot artifacts (BOOT.BIN, uEnv.txt, dtb, zImage).
