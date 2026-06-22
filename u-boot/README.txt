@@ -1,15 +1,15 @@
 U-Boot for MYS-7Z020-V2
 
-This directory contains the U-Boot source code for the MYS-7Z020-V2 board, customized with specific boot logic to ensure compatibility with uEnv.txt and the system kernel.
+This directory contains the U-Boot source code for the MYS-7Z020-V2 board, customized with specific boot logic to ensure compatibility with uEnv.txt and the system kernel.  
 
 Build Instructions
 
 To compile the U-Boot binary, run the following commands in this directory:
 
-Configure U-Boot for MYS-7Z020-V2
+# Configure U-Boot for MYS-7Z020-V2
 make CROSS_COMPILE=arm-linux-gnueabihf- xilinx_zynq_virt_defconfig
 
-Compile with 14 parallel jobs
+# Compile with 8 parallel jobs
 make CROSS_COMPILE=arm-linux-gnueabihf- -j8
 
 Deployment
@@ -23,8 +23,8 @@ Troubleshooting
 
 If the board fails to boot automatically or defaults to the wrong environment, you need to manually set the boot command. Once the board reaches the U-Boot command prompt (Zynq>), execute the following commands:
 
-setenv bootcmd "run default_bootcmd"
-saveenv
-reset
+    setenv bootcmd "run default_bootcmd"
+    saveenv
+    reset
 
 Note: This configuration ensures that U-Boot prioritizes reading uEnv.txt from the SD card before proceeding with the standard kernel boot process.
