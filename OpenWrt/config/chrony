@@ -1,0 +1,36 @@
+config pool
+        option hostname 'ntp.aliyun.com'
+        option maxpoll '6'
+        option maxsources '4'
+        option iburst '1'
+        option minsamples '4'
+        option maxsamples '16'
+
+config dhcp_ntp_server 'dhcp_ntp_server'
+        option disabled '1'
+
+config allow 'allow'
+        list interface 'wan'
+
+config makestep 'makestep'
+        option threshold '1.0'
+        option limit '3'
+
+config nts 'nts'
+        option rtccheck '1'
+        option systemcerts '1'
+
+config pool
+        option hostname 'ntp.tencent.com'
+        option maxpoll '6'
+        option minsamples '4'
+        option maxsamples '16'
+        option iburst '1'
+
+config pool
+        option hostname 's1e.time.edu.cn'
+        option maxpoll '6'
+        option maxsamples '16'
+        option iburst '1'
+        option minsamples '4'
+
