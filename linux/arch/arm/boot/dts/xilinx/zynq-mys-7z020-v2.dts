@@ -15,6 +15,7 @@
 		ethernet0 = &gem0;
 		mmc0 = &sdhci0;
 		serial0 = &uart1;
+		serial1 = &uart0;
 		spi0 = &qspi;
 	};
 
@@ -262,7 +263,7 @@
 	pinctrl-names = "default";
 	pinctrl-0 = <&pinctrl_uart0_default>;
 
-	status = "disabled";
+	status = "okay";
 };
 
 &uart1 {
@@ -281,15 +282,23 @@
         clock-frequency = <400000>;
 
         temperature-sensor@49 {
-                status = "okay";
                 compatible = "st,stlm75";
                 reg = <0x49>;
+
+		status = "okay";
         };
 
         accelerometer@53 {
                 compatible = "adi,adxl345";
                 reg = <0x53>;
-                interrupt-parent = <&intc>;
-                interrupts = <0x0 0x1e 0x4>;
+
+		status = "okay";
+        };
+
+	eeprom@57 {
+                compatible = "atmel,24c64";
+                reg = <0x57>;
+                pagesize = <32>;
         };
 };
+
