@@ -79,6 +79,13 @@
 		device_type = "memory";
 		reg = <0x0 0x40000000>;
 	};
+
+	pps_gps: pps@0 {
+        compatible = "pps-gpio";
+        gpios = <&gpio0 113 GPIO_ACTIVE_HIGH>;
+
+        status = "okay";
+    };
 };
 
 &clkc {
