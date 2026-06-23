@@ -68,3 +68,20 @@ root@OpenWrt:~# cat /sys/class/hwmon/hwmon0/temp1_input
 root@OpenWrt:~# cat /sys/class/hwmon/hwmon0/temp1_input
 40000
 root@OpenWrt:~#
+
+root@OpenWrt:~# hexdump -C -n 32 /sys/bus/nvmem/devices/0-00577/nvmem
+00000000  4d 59 53 2d 37 5a 30 32  30 2d 56 32 20 42 53 50  |MYS-7Z020-V2 BSP|
+00000010  5f 54 65 73 74 ff ff ff  ff ff ff ff ff ff ff ff  |_Test...........|
+00000020
+root@OpenWrt:~# printf "f78fk" | dd of=/sys/bus/nvmem/devices/0-00577/nvmem bs=1
+ seek=32 conv=notrunc
+5+0 records in
+5+0 records out
+root@OpenWrt:~# hexdump -C -n 64 /sys/bus/nvmem/devices/0-00577/nvmem
+00000000  4d 59 53 2d 37 5a 30 32  30 2d 56 32 20 42 53 50  |MYS-7Z020-V2 BSP|
+00000010  5f 54 65 73 74 ff ff ff  ff ff ff ff ff ff ff ff  |_Test...........|
+00000020  66 37 38 66 6b ff ff ff  ff ff ff ff ff ff ff ff  |f78fk...........|
+00000030  ff ff ff ff ff ff ff ff  ff ff ff ff ff ff ff ff  |................|
+00000040
+root@OpenWrt:~#
+
