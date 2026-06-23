@@ -85,3 +85,13 @@ root@OpenWrt:~# hexdump -C -n 64 /sys/bus/nvmem/devices/0-00577/nvmem
 00000040
 root@OpenWrt:~#
 
+root@OpenWrt:~# echo 1 > /sys/class/leds/led_blue/brightness
+root@OpenWrt:~# echo 1 > /sys/class/leds/led_green/brightness
+root@OpenWrt:~# echo 1 > /sys/class/leds/led_red/brightness
+root@OpenWrt:~#
+root@OpenWrt:~# echo 0 > /sys/class/leds/led_blue/brightness
+root@OpenWrt:~# echo 0 > /sys/class/leds/led_green/brightness
+root@OpenWrt:~# echo 0 > /sys/class/leds/led_red/brightness
+root@OpenWrt:~#
+
+
