@@ -7,7 +7,7 @@ This repository provides a complete board support package (BSP) and FPGA design 
 - `OpenWrt/`: Build configuration files for the root filesystem.
 - `docs/`: Validation logs, screenshots, and hardware test results.
 - `boot/`: Boot artifacts (BOOT.BIN, uEnv.txt, dtb, zImage).
-- `fpga/`: Complete PL (Programmable Logic) design including RTL source code, managed via Git LFS for block designs and synthesized bitstreams.
+- `fpga/`: Complete PL (Programmable Logic) design including RTL source code.
 - `u-boot/`: Customized U-Boot source code (based on upstream u-boot-2026.07-rc4).
 - `scripts/`: Automated build scripts and configuration files (e.g., boot.bif, make_boot.sh) to effortlessly package FSBL, PL bitstream, and U-Boot into BOOT.BIN.
 
