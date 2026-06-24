@@ -10,7 +10,7 @@ alarm_beep() {
     local count=$1
     local delay=$2
     for i in $(seq 1 "$count"); do
-        beep
+        beep -l 100
         sleep "$delay"
     done
 }
@@ -19,7 +19,8 @@ alarm_beep() {
 if [ -f /sys/class/hwmon/hwmon0/temp1_input ]; then
     CURRENT_TEMP=$(cat /sys/class/hwmon/hwmon0/temp1_input)
     if [ "$CURRENT_TEMP" -ge "$TEMP_LIMIT" ]; then
-        alarm_beep 5 1
+        alarm_beep 4 1
+	echo 1 > /sys/class/leds/led_green/brightness
         exit 1
     fi
 fi
@@ -30,11 +31,13 @@ if [ -f /sys/block/mmcblk0/device/serial ]; then
     if [ "$CURRENT_SERIAL" != "$EXPECTED_SERIAL" ]; then
         # Wrong SD Card / Card swapped: Beep 3 times
         alarm_beep 3 1
+	echo 1 > /sys/class/leds/led_blue/brightness
         exit 2
     fi
 else
     # SD Card completely missing or hardware dead: Beep 3 times
     alarm_beep 3 1
+    echo 1 > /sys/class/leds/led_blue/brightness
     exit 2
 fi
 
@@ -45,6 +48,7 @@ ROOT_LINE=$(awk '$2=="/" {print $0}' /proc/mounts)
 if [ -z "$ROOT_LINE" ]; then
     # Empty mount info means major system failure
     alarm_beep 3 1
+    echo 1 > /sys/class/leds/usr_led1/brightness
     exit 2
 fi
 
@@ -54,6 +58,7 @@ ROOT_STATUS=$(echo "$ROOT_LINE" | awk '{print $4}' | cut -d, -f1)
 if [ "$ROOT_STATUS" = "ro" ]; then
     # SD card error or file system downgrade to read-only
     alarm_beep 3 1
+    echo 1 > /sys/class/leds/usr_led1/brightness
     exit 2
 fi
 
@@ -65,11 +70,13 @@ if command -v chronyc >/dev/null 2>&1; then
 
     if [ -z "$LEAP_STATUS" ] || [ -z "$STRATUM" ]; then
         alarm_beep 2 1
+	echo 1 > /sys/class/leds/led_red/brightness
         exit 3
     fi
 
     if [ "$LEAP_STATUS" != "Normal" ] || [ "$STRATUM" -le 0 ] || [ "$STRATUM" -ge 4 ]; then
         alarm_beep 2 1
+	echo 1 > /sys/class/leds/led_red/brightness
         exit 3
     fi
 fi
